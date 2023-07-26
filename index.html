@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rifa - Venda de Números</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Rifa - Venda de Números</h1>
+      <div class="buttons">
+      <button class="show-cart-button" onclick="showCart()">
+        Mostrar Carrinho
+      </button>
+      <button class="hide-cart-button" onclick="hideCart()">
+        Ocultar Carrinho
+      </button>
+    </div>
+      <div class="number-grid" id="numberGrid">
+        <!-- Os números serão adicionados dinamicamente pelo JavaScript -->
+      </div>
+      <div class="cart" id="cart">
+        <h2>Carrinho de Compras</h2>
+        <ul id="cartItems">
+          <!-- Itens do carrinho serão adicionados aqui -->
+        </ul>
+        <div id="cartSummary">
+          <p>Total a Pagar: <span id="totalValue">R$ 0,00</span></p>
+        </div>
+        <button class="checkout-button limp-cart" onclick="clearCart()">
+          Limpar Carrinho
+        </button>
+        <button class="checkout-button" onclick="checkout()">Checkout</button>
+      </div>
+    </div>
+
+    
+  </body>
+  <script src="script.js"></script>
+</html>

@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+  .container h1 {
+    text-align: center;
+  }
+
+  /* Estilos para os números */
+  .number-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    margin-top: 20px;
+  }
+
+  .number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  /* Estilos para os números selecionados */
+  .number.selected {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .cart {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  /* Estilos para o carrinho de compras */
+  .cart h2 {
+    color: #333;
+  }
+
+  .cart button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .cart button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Estilos para o botão de limpar carrinho */
+  .clear-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  .clear-button:hover {
+    background-color: #c82333;
+  }
+  /* Estilos para o botão Checkout */
+  .checkout-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  .checkout-button:hover {
+    background-color: #218838;
+  }
+
+  /* Estilos para o resumo do carrinho */
+  #cartSummary {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .cart {
+    display: none;
+    position: fixed;
+    top: 50%; /* Centraliza verticalmente na tela */
+    right: 10px;
+    transform: translateY(-50%); /* Ajusta a posição vertical */
+    max-width: 550px; /* Limita o tamanho máximo a 550px */
+    background-color: #fff;
+    box-shadow: -1px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 999; /* Mantém o carrinho sobreposto à tela */
+  }
+
+  .cart h2 {
+    color: #333;
+  }
+
+  .cart button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .cart button:hover {
+    background-color: #0056b3;
+  }
+  .hide-cart-button {
+  
+
+  background-color: #dc3545; /* Botão vermelho */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 130px;
+ margin-top: 5px;
+
+}
+.show-cart-button {
+  
+
+  background-color: #28a745; /* Botão verde */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 130px;
+  margin-bottom: 5px;
+}
+.buttons {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
