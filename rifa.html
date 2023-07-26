@@ -195,7 +195,7 @@
       // Código JavaScript para gerar os números
       const numberGrid = document.getElementById("numberGrid");
       const cartItems = document.getElementById("cartItems");
-      const totalNumbers = 100000;
+      const totalNumbers = 150;
 
       for (let i = 1; i <= totalNumbers; i++) {
         const numberDiv = document.createElement("div");
@@ -247,7 +247,7 @@
         console.log("Números selecionados: ", selectedNumbers);
 
         // Cálculo do valor total dos números selecionados (R$ 1,00 por número)
-        const totalValue = selectedNumbers.length * 1;
+        const totalValue = selectedNumbers.length * 5;
 
         // Exibir o valor total no carrinho
         const totalValueElement = document.getElementById("totalValue");
@@ -288,7 +288,7 @@
         const selectedNumbers = Array.from(
           document.getElementsByClassName("selected")
         ).map((div) => div.textContent);
-        const totalValue = selectedNumbers.length * 1;
+        const totalValue = selectedNumbers.length * 5;
         const totalValueElement = document.getElementById("totalValue");
         totalValueElement.textContent = "R$ " + totalValue.toFixed(2);
       }
