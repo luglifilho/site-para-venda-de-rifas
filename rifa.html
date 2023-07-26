@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rifa - Venda de Números</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+      }
+      .container h1 {
+        text-align: center;
+      }
+
+      /* Estilos para os números */
+      .number-grid {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 5px;
+        margin-top: 20px;
+      }
+
+      .number {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      /* Estilos para os números selecionados */
+      .number.selected {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .cart {
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      /* Estilos para o carrinho de compras */
+      .cart h2 {
+        color: #333;
+      }
+
+      .cart button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .cart button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Estilos para o botão de limpar carrinho */
+      .clear-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+
+      .clear-button:hover {
+        background-color: #c82333;
+      }
+      /* Estilos para o botão Checkout */
+      .checkout-button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .checkout-button:hover {
+        background-color: #218838;
+      }
+
+      /* Estilos para o resumo do carrinho */
+      #cartSummary {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-top: 10px;
+        text-align: center;
+      }
+      .cart {
+        display: none;
+        position: fixed;
+        top: 50%; /* Centraliza verticalmente na tela */
+        right: 10px;
+        transform: translateY(-50%); /* Ajusta a posição vertical */
+        max-width: 550px; /* Limita o tamanho máximo a 550px */
+        background-color: #fff;
+        box-shadow: -1px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        overflow-y: auto;
+        z-index: 999; /* Mantém o carrinho sobreposto à tela */
+      }
+
+      .cart h2 {
+        color: #333;
+      }
+
+      .cart button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .cart button:hover {
+        background-color: #0056b3;
+      }
+      .hide-cart-button {
+      
+  
+      background-color: #dc3545; /* Botão vermelho */
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      width: 130px;
+     margin-top: 5px;
+   
+    }
+    .show-cart-button {
+      
+
+      background-color: #28a745; /* Botão verde */
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      width: 130px;
+      margin-bottom: 5px;
+    }
+    .buttons {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+  
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Rifa - Venda de Números</h1>
+      <div class="buttons">
+      <button class="show-cart-button" onclick="showCart()">
+        Mostrar Carrinho
+      </button>
+      <button class="hide-cart-button" onclick="hideCart()">
+        Ocultar Carrinho
+      </button>
+    </div>
+      <div class="number-grid" id="numberGrid">
+        <!-- Os números serão adicionados dinamicamente pelo JavaScript -->
+      </div>
+      <div class="cart" id="cart">
+        <h2>Carrinho de Compras</h2>
+        <ul id="cartItems">
+          <!-- Itens do carrinho serão adicionados aqui -->
+        </ul>
+        <div id="cartSummary">
+          <p>Total a Pagar: <span id="totalValue">R$ 0,00</span></p>
+        </div>
+        <button class="checkout-button limp-cart" onclick="clearCart()">
+          Limpar Carrinho
+        </button>
+        <button class="checkout-button" onclick="checkout()">Checkout</button>
+      </div>
+    </div>
+
+    <script>
+      // Código JavaScript para gerar os números
+      const numberGrid = document.getElementById("numberGrid");
+      const cartItems = document.getElementById("cartItems");
+      const totalNumbers = 100000;
+
+      for (let i = 1; i <= totalNumbers; i++) {
+        const numberDiv = document.createElement("div");
+        numberDiv.classList.add("number");
+        numberDiv.textContent = i;
+
+        numberDiv.addEventListener("click", () => {
+          if (!numberDiv.classList.contains("selected")) {
+            numberDiv.classList.add("selected");
+
+            const cartItem = document.createElement("li");
+            cartItem.textContent = i;
+            cartItems.appendChild(cartItem);
+          } else {
+            numberDiv.classList.remove("selected");
+
+            const cartItem = Array.from(cartItems.children).find(
+              (item) => item.textContent === i.toString()
+            );
+            if (cartItem) {
+              cartItems.removeChild(cartItem);
+            }
+          }
+
+          updateTotalValue(); // Adicionando chamada para atualizar o valor total após selecionar ou remover números
+          updateCartVisibility(); // Adicionando chamada para atualizar a visibilidade do carrinho
+        });
+
+        numberGrid.appendChild(numberDiv);
+      }
+
+      // Função para limpar o carrinho
+      function clearCart() {
+        const selectedNumbers = document.getElementsByClassName("selected");
+        while (selectedNumbers.length > 0) {
+          selectedNumbers[0].classList.remove("selected");
+        }
+
+        cartItems.innerHTML = "";
+        updateTotalValue(); // Chamada para atualizar o valor total após limpar o carrinho
+        updateCartVisibility(); // Chamada para atualizar a visibilidade do carrinho após limpar o carrinho
+      }
+
+      // Função para realizar o checkout
+      function checkout() {
+        const selectedNumbers = Array.from(
+          document.getElementsByClassName("selected")
+        ).map((div) => div.textContent);
+        console.log("Números selecionados: ", selectedNumbers);
+
+        // Cálculo do valor total dos números selecionados (R$ 1,00 por número)
+        const totalValue = selectedNumbers.length * 1;
+
+        // Exibir o valor total no carrinho
+        const totalValueElement = document.getElementById("totalValue");
+        totalValueElement.textContent = "R$ " + totalValue.toFixed(2); // Formatando o valor para 2 casas decimais
+      }
+
+      // Função para atualizar a visibilidade do carrinho
+      function showCart() {
+        const cart = document.getElementById("cart");
+        cart.style.display = "block";
+        clearTimeout(cartTimer); // Limpa o timer para manter o carrinho visível enquanto está interagindo
+      }
+
+      // Função para ocultar o carrinho após 5 segundos de inatividade
+      let cartTimer; // Variável para armazenar o timer do carrinho
+
+      function hideCart() {
+        const cart = document.getElementById("cart");
+        cart.style.display = "none";
+      }
+
+      function updateCartVisibility() {
+        const cart = document.getElementById("cart");
+        const cartItems = document.getElementsByClassName("selected");
+
+        if (cartItems.length > 0) {
+          cart.style.display = "block";
+
+          // Configura um timer para ocultar o carrinho após 5 segundos de inatividade
+          clearTimeout(cartTimer);
+          cartTimer = setTimeout(hideCart, 5000);
+        } else {
+          cart.style.display = "none";
+        }
+      }
+
+      function updateTotalValue() {
+        const selectedNumbers = Array.from(
+          document.getElementsByClassName("selected")
+        ).map((div) => div.textContent);
+        const totalValue = selectedNumbers.length * 1;
+        const totalValueElement = document.getElementById("totalValue");
+        totalValueElement.textContent = "R$ " + totalValue.toFixed(2);
+      }
+
+      // Atualizar o valor total ao carregar a página
+      updateTotalValue();
+    </script>
+  </body>
+</html>
