@@ -4,20 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rifa - Venda de Números</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <div class="container">
       <h1>Rifa - Venda de Números</h1>
       <div class="buttons">
-      <button class="show-cart-button" onclick="showCart()">
-        Mostrar Carrinho
-      </button>
-      <button class="hide-cart-button" onclick="hideCart()">
-        Ocultar Carrinho
-      </button>
-    </div>
+        <button class="show-cart-button" onclick="showCart()">
+          Mostrar Carrinho
+        </button>
+        <button class="hide-cart-button" onclick="hideCart()">
+          Ocultar Carrinho
+        </button>
+      </div>
       <div class="number-grid" id="numberGrid">
         <!-- Os números serão adicionados dinamicamente pelo JavaScript -->
       </div>
@@ -32,13 +32,16 @@
         <button class="clear-button" onclick="clearCart()">
           Limpar Carrinho
         </button>
-        <a href="/checkout.html"> 
-        <button class="checkout-button" onclick="checkout()">Checkout</button>
-      </a>
+        <a href="/checkout.html">
+          <button class="checkout-button" onclick="checkout()">Checkout</button>
+        </a>
       </div>
     </div>
-
     
+    <a href="home.html">
+      <button class="return-button">Retornar para a Home</button>
+    </a>
+  
   </body>
   <script src="script.js"></script>
 </html>
