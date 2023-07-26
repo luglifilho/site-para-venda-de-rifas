@@ -47,19 +47,15 @@ body {
   .cart button {
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
+    align-items: center;
+
   }
 
-  .cart button:hover {
-    background-color: #0056b3;
-  }
+ 
 
   /* Estilos para o botão de limpar carrinho */
   .clear-button {
-    position: absolute;
+  
     top: 10px;
     right: 10px;
     background-color: #dc3545;
@@ -67,6 +63,7 @@ body {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    border-radius: 20px;
   }
 
   .clear-button:hover {
@@ -80,6 +77,9 @@ body {
     padding: 5px 10px;
     margin-right: 10px;
     cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+
   }
 
   .checkout-button:hover {
@@ -110,19 +110,8 @@ body {
   .cart h2 {
     color: #333;
   }
+  
 
-  .cart button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-
-  .cart button:hover {
-    background-color: #0056b3;
-  }
   .hide-cart-button {
   
 
@@ -133,7 +122,7 @@ body {
   cursor: pointer;
   width: 130px;
  margin-top: 5px;
-
+ border-radius: 15px;
 }
 .show-cart-button {
   
@@ -145,9 +134,11 @@ body {
   cursor: pointer;
   width: 130px;
   margin-bottom: 5px;
+  border-radius: 15px;
 }
 .buttons {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    
 }

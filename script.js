@@ -52,6 +52,7 @@
           document.getElementsByClassName("selected")
         ).map((div) => div.textContent);
         console.log("Números selecionados: ", selectedNumbers);
+        localStorage.setItem("cart", JSON.stringify(selectedNumbers)); // Salva os itens no localStorage
 
         // Cálculo do valor total dos números selecionados (R$ 1,00 por número)
         const totalValue = selectedNumbers.length * 5;

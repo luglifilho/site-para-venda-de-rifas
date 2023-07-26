@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Rifa</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .checkout-items {
+        margin-bottom: 20px;
+      }
+
+      .checkout-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .checkout-total {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 5px;
+        font-weight: bold;
+        border-top: 2px solid #333;
+        border-bottom: 2px solid #333;
+      }
+
+      .checkout-options {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .checkout-options label {
+        font-weight: bold;
+      }
+
+      .checkout-options input {
+        margin-left: 5px;
+      }
+
+      .checkout-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+
+      .checkout-button:hover {
+        background-color: #218838;
+      }
+      .container-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .return-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 20px;
+      }
+      .return-button:hover {
+        background-color: #c82333;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Checkout - Rifa</h1>
+      <div class="checkout-items" id="checkoutItems">
+        <!-- Itens do carrinho serão adicionados aqui -->
+      </div>
+
+      <div class="checkout-total" id="checkoutTotal">
+        <!-- Valor total do carrinho será adicionado aqui -->
+      </div>
+
+      <div class="checkout-options">
+        <div>
+          <label>Pagamento via PIX:</label>
+          <input type="text" placeholder="Chave PIX" />
+        </div>
+        <div>
+          <label>Pagamento com Cartão de Crédito:</label>
+          <input type="text" placeholder="Número do Cartão" />
+        </div>
+      </div>
+      <div class="container-button">
+        <button class="return-button">Retornar para a seleção</button>
+        <button class="checkout-button">Pagar</button>
+      </div>
+    </div>
+
+    <script>
+      // Obtem o carrinho do localStorage
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Atualiza a lista de itens do carrinho na tela de checkout
+      const checkoutItems = document.getElementById("checkoutItems");
+      checkoutItems.innerHTML = cart
+        .map(
+          (item, index) =>
+            `<div class="checkout-item"> * ${item}</div>`
+        )
+        .join("");
+
+      // Calcula o valor total do carrinho
+      const total = cart.length * 1; // Considerando o valor fixo de R$ 1 por item
+      const checkoutTotal = document.getElementById("checkoutTotal");
+      checkoutTotal.innerHTML = `<span>Total a Pagar:</span><span>R$ ${total.toFixed(
+        2
+      )}</span>`;
+    </script>
+  </body>
+</html>
